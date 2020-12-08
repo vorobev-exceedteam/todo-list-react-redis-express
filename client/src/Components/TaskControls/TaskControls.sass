@@ -1,0 +1,41 @@
+@import "./src/constants/sizes"
+.task-controls
+  display: flex
+  border-top: 1px lightgray solid
+  flex-direction: row
+  align-items: center
+  justify-content: space-between
+  align-content: center
+  padding: 0 20px
+  min-height: 7vh
+
+  &__text-button
+    font-size: $small
+    margin: 0
+    color: gray
+
+    &:hover
+      cursor: pointer
+      color: darkgray
+
+    &_disabled
+      color: gray
+      pointer-events: none
+
+    &_hidden
+      opacity: 0
+
+    &_left
+      align-self: start
+
+    &_right
+      align-self: end
+
+
+  &__badges-group
+    display: flex
+    width: 40%
+    align-self: center
+    justify-content: space-between
+    align-items: center
+    justify-self: center

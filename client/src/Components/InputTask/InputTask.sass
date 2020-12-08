@@ -1,0 +1,30 @@
+.input-task
+  padding: 10px 10px
+  display: flex
+  flex-flow: column
+  min-height: 70px
+  justify-content: center
+  align-content: center
+
+  &__error
+    margin: 0
+    font-size: small
+    color: red
+    text-align: center
+
+    &_hidden
+      height: 0
+      width: 0
+      opacity: 0
+
+
+  &__field
+    font-size: medium
+    align-self: center
+    font-family: inherit
+    width: 90%
+    border: 0
+    border-bottom: 2px solid lightgray
+
+    &:disabled
+      background: transparent
