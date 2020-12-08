@@ -1,6 +1,6 @@
 {
-  "name": "todo_server",
-  "version": "0.1.0",
+  "name": "todo-list-mern-application",
+  "version": "0.8.0",
   "description": "",
   "main": "index.js",
   "scripts": {
