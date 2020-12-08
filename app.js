@@ -2,7 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const { NotFound } = require('./utills/Errors');
+// const { NotFound } = require('./utills/Errors');
+const path = require('path');
 
 const taskRoutes = require('./routes/task.route');
 const authRoutes = require('./routes/user.route');
@@ -13,7 +14,7 @@ const app = express();
 
 const port = process.env.SERVER_PORT || 9000;
 
-const mongoDB = process.env.MONGO_DB_URI;
+const mongoDB = process.env.MONGODB_URI;
 mongoose
   .connect(mongoDB, {
     useNewUrlParser: true,
@@ -27,9 +28,16 @@ mongoose
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.use(express.static(path.join(__dirname, 'client', 'build')));
+
 app.use('/tasks', taskRoutes);
 app.use('/auth', authRoutes);
-app.use('*', (req, res, next) => next(new NotFound('Route does not exist')));
+
+// app.use('*', (req, res, next) => next(new NotFound('Route does not exist')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+});
 
 app.use(errorHandler);
 
