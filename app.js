@@ -12,7 +12,7 @@ const errorHandler = require('./middleware/errorHandler');
 
 const app = express();
 
-const port = process.env.SERVER_PORT || 9000;
+const port = process.env.PORT || 9000;
 
 const mongoDB = process.env.MONGODB_URI;
 mongoose
