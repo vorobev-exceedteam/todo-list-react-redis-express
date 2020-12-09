@@ -1,8 +1,6 @@
-import React, {useEffect, memo} from "react";
+import React, {memo} from "react";
 import TaskItem from "./TaskItem";
 import './TaskList.sass'
-import {useDispatch, useSelector} from "react-redux";
-import {fetchTasks} from "../../actions/taskActions";
 
 
 const TaskList = (props) => {

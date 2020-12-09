@@ -1,6 +1,5 @@
 import './App.css';
 import Todo from './Containers/Todo';
-// import { Container } from "@material-ui/core";
 import React, {useEffect} from "react";
 import Navigation from "./Components/Navigation";
 import {Redirect, Switch, Route} from "react-router-dom";
@@ -26,6 +25,8 @@ function App() {
                 break;
             case 'idle':
                 dispatch(fetchTasks());
+                break;
+            default:
                 break;
         }
 

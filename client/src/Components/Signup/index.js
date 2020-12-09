@@ -59,6 +59,8 @@ const Signup = () => {
                     case 'signup/password':
                         errors.password = {message: serverValidation.message}
                         break;
+                    default:
+                        break;
                 }
             })
 
