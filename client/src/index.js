@@ -11,12 +11,8 @@ import thunk from 'redux-thunk';
 import {BrowserRouter as Router} from "react-router-dom";
 import "bootstrap/scss/bootstrap.scss"
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(rootReducer, initialState ,composeEnhancers(applyMiddleware(thunk)));
+const store = createStore(rootReducer, initialState , applyMiddleware(thunk));
 
-// store.subscribe(() => {
-//     localStorage.setItem('reduxState', JSON.stringify(store.getState()))
-// })
 
 ReactDOM.render(
     <React.StrictMode>
