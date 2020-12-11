@@ -14,16 +14,18 @@ const app = express();
 
 const port = process.env.PORT || 9000;
 
-const mongoDB = process.env.MONGODB_URI;
-mongoose
-  .connect(mongoDB, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .catch((err) => {
-    console.error(err.stack);
-    process.exit(1);
-  });
+if (process.env.NODE_ENV !== 'test') {
+  const mongoDB = process.env.MONGODB_URI;
+  mongoose
+    .connect(mongoDB, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    })
+    .catch((err) => {
+      console.error(err.stack);
+      process.exit(1);
+    });
+}
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -44,3 +46,5 @@ app.use(errorHandler);
 app.listen(port, () => {
   console.log('Server is up and running on port number ' + port);
 });
+
+module.exports = app;

@@ -5,7 +5,7 @@ const validationHandler = (schema, path, key) => async (req, res, next) => {
   try {
     let data
     if (key) {
-      data = req.body['key'];
+      data = req.body[key];
     }
     else {
       data = req.body;
