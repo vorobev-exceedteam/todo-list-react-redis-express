@@ -5,11 +5,13 @@ const createResponse = require('../utills/createResponse');
 exports.fetchTasks = async (req, res, next) => {
   try {
     const tasks = await Task.find({ userid: req.userid });
-    return res.status(statusCodes.OK).json(createResponse('ok', 'Delivering tasks', tasks.map(task => ({
+    return res.status(statusCodes.OK).json(createResponse('ok', 'Delivering tasks',
+      tasks.map(task => ({
       _id: task._id,
       name: task.name,
       checked: task.checked,
-    }))));
+    }))
+    ));
   } catch (e) {
     next(e);
   }

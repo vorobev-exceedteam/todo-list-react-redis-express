@@ -35,11 +35,19 @@ const clearTasks = async (user) => {
   return Task.deleteMany({ userid: { $ne: user._id } });
 };
 
-const isAllTasksReceived = async (tasks) => {
-  for (const task of tasks) {
-    if (!Task.exists({ _id: task.id, name: task.name, checked: task.checked })) {
+const isAllTasksReceived = async (tasks, userid) => {
+  const dbTasksLength = (await Task.find({ userid: userid })).length;
+  switch (true) {
+    case !tasks:
+    case dbTasksLength !== tasks.length:
       return false;
-    }
+    default:
+      for (let task of tasks) {
+        if (await Task.exists({ userid, name: task.name, _id: task.id, checked: task.checked })) {
+          return false;
+        }
+      }
+      break;
   }
   return true;
 };
